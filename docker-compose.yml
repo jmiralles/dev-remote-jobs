@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  nextjs:
+    environment:
+      - NODE_ENV=development
+    build:
+      dockerfile: Dockerfile.dev
+    container_name: nextjs
+    restart: always
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+
+
+  redis:
+    image: redis:latest
+    profiles: [development]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      timeout: 5s
+      retries: 3
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+
+volumes:
+  redis_data:
+    driver: local
