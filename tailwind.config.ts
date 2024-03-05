@@ -11,13 +11,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "blue-text-title": "#243757",
-        "dark-purple": "#2c003e",
-        "mid-purple": "#600047",
-        "light-purple": "#8b004f",
-        "dark-red": "#b30054",
-        "mid-red": "#d90057",
-        "light-red": "#ff005a",
+        black: "#221e1f",
+        white: "#f9f9f9",
+        "mandys-pink": "#efc0b1",
+        "pale-copper": "#e68769",
+        flame: "#dd4f21",
       },
     },
   },
