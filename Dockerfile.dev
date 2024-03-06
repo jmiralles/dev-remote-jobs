@@ -5,18 +5,18 @@ WORKDIR /app
 
 # Copy the package.json file to my current directory for install necessary dependence  
 COPY package.json .
+COPY package-lock.json .
 
 # Install the dependence
 RUN npm install
 
 # Copy other file to my current directory
+COPY .env ./.env
+COPY prisma ./prisma/ 
+
+RUN npx prisma generate
+
 COPY . .
-
-
-
-ENV NODE_ENV=development
-ENV CHOKIDAR_USEPOLLING=true
-ENV WATCHPACK_POLLING=true
 
 # Build for hot reloading
 CMD [ "npm", "run", "dev"]

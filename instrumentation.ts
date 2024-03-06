@@ -1,6 +1,5 @@
 export const register = async () => {
   if (process.env.NEXT_RUNTIME === "nodejs") {
-    console.log("Instrumentation!!!");
     const { Worker, Queue } = await import("bullmq");
     const { connection } = await import("./app/lib/redis");
 
@@ -11,12 +10,7 @@ export const register = async () => {
     const worker = new Worker(
       "fetch-remote-jobs",
       async () => {
-        // fetch from remote
-        console.log("Fetching remote jobs");
-        const resp = await fetch("https://remoteok.io/api");
-        const data = await resp.json();
-
-        console.log(data);
+        console.log("Running Cron Job...");
       },
       {
         connection,
@@ -32,7 +26,7 @@ export const register = async () => {
       {},
       {
         repeat: {
-          every: 100000, // 100 seconds or now
+          every: 100000,
         },
       }
     );
