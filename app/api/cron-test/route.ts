@@ -4,7 +4,7 @@ const PROVIDER_VALUES = {
   name: "remotive",
   url: "https://remotive.com/",
   api_url:
-    "https://remotive.com/api/remote-jobs?category=software-dev&limit=10",
+    "https://remotive.com/api/remote-jobs?category=software-dev&limit=100",
 };
 
 type RemotiveJob = {
@@ -24,6 +24,7 @@ type Data = {
 };
 
 export async function GET() {
+  console.log("FETCH FROM REMOTIVE!")
   const resp = await fetch(PROVIDER_VALUES.api_url);
   const data: Data = await resp.json();
 

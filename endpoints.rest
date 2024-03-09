@@ -1,0 +1,12 @@
+
+
+
+
+GET http://localhost:3000/api/jobs
+
+GET http://localhost:3000/api/cron-test
+
+
+GET https://remotive.com/api/remote-jobs?category=software-dev&limit=1
+
+

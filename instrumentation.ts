@@ -26,7 +26,7 @@ export const register = async () => {
       {},
       {
         repeat: {
-          every: 100000,
+          pattern: "0 12 * * *",
         },
       }
     );
